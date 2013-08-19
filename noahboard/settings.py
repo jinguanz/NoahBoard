@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
 # Set the time zone
+# Add comments
 TIME_ZONE = 'America/Los_Angeles'
 
 # Language code for this installation. All choices can be found here:

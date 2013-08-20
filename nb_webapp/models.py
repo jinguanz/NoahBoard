@@ -42,14 +42,12 @@ class BasicInfo(models.Model):
     )
     access_rights = models.CharField(max_length=3, choices=ACCESS_RIGHTS)
 
-#UserProfile
-class UserProfile(models.Model):
-    basic_info = models.OneToOneField(BasicInfo)
-    followers = models.ManyToManyField(BasicInfo)
-    knowledge_profile = models.OneToOneField(KnowledgeProfile)
+#KnowledgeBoard
+class KnowledgeBoard(models.Model):
+    def __unicode__(self):
+        return ""
 
-
-#KnowledgProfile
+ #KnowledgProfile
 class KnowledgeProfile(models.Model):
     interests = models.CharField(max_length=50)
     num_flowers = models.IntegerField()
@@ -64,10 +62,13 @@ class KnowledgeProfile(models.Model):
     access_rights = models.CharField(max_length=3, choices=ACCESS_RIGHTS)
     knowledge_board = models.OneToOneField(KnowledgeBoard)
 
-#KnowledgeBoard
-class KnowledgeBoard(models.Model):
-    def __unicode__(self):
-        return ""
+
+#UserProfile
+class UserProfile(models.Model):
+    basic_info = models.OneToOneField(BasicInfo)
+    followers = models.ManyToManyField(BasicInfo,related_name="followers_basic_info")
+    knowledge_profile = models.OneToOneField(KnowledgeProfile)
+
 
 #KnowledgeCard
 
@@ -77,7 +78,7 @@ class KnowledgeCard(models.Model):
     title = models.CharField(max_length=30)
     #need to verify max chars
     contents = models.CharField(max_length=450)
-    picture = models.ImageField()
+    picture = models.ImageField(upload_to='/Users/jinguangzhou/git/NoahBoard/images')
     video_link = models.URLField()
     source_link = models.URLField()
     CATEGORIES = (
@@ -103,7 +104,7 @@ class KnowledgeCard(models.Model):
 
 #Comments
 class Comment(models.Model):
-    knowledge_card=models.ForeignKey(KnowledgeCard)
-    contents =models.CharField(max_length=100)
-    post_date=models.DateField()
-    num_upvotes=models.IntegerField()
+    knowledge_card = models.ForeignKey(KnowledgeCard)
+    contents = models.CharField(max_length=100)
+    post_date = models.DateField()
+    num_upvotes = models.IntegerField()

@@ -2,27 +2,15 @@ from django.db import models
 
 # Create your models here.
 
-#ContactInfo class
-class ContactInfo(models.Model):
-    email = models.EmailField()
-    facebook_account = models.URLField()
-    linkedin_account = models.URLField()
-    website = models.URLField()
 
-    def __unicode__(self):
-        return self.email
-
-
-#WorkPlace class
-class WorkPlace(models.Model):
-    company_name = models.CharField(max_length=100)
-    description = models.CharField(max_length=300)
-    position = models.CharField(max_length=30)
-    start_date = models.DateField()
 
 
 #BasicInfo
 class BasicInfo(models.Model):
+    email_address= models.EmailField()
+    linkedin_member_id=models.CharField(max_length=20)
+    facebook_member_id=models.CharField(max_length=20)
+    website = models.URLField()
     account_type = models.CharField(max_length=1)
     password = models.CharField(max_length=100)
     first_name = models.CharField(max_length=30)
@@ -32,15 +20,22 @@ class BasicInfo(models.Model):
         ('F', 'Female'),
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    contact_info = models.OneToOneField(ContactInfo)
     #work is different form the db design
-    work = models.ForeignKey(WorkPlace)
     about_me = models.CharField(max_length=300)
     ACCESS_RIGHTS = (
         ('PUB', 'Public'),
         ('PRI', 'Private')
     )
     access_rights = models.CharField(max_length=3, choices=ACCESS_RIGHTS)
+
+
+#WorkPlace class
+class WorkPlace(models.Model):
+    company_name = models.CharField(max_length=100)
+    description = models.CharField(max_length=300)
+    position = models.CharField(max_length=30)
+    start_date = models.DateField()
+    basic_infor = models.ForeignKey(BasicInfo)
 
 #KnowledgeBoard
 class KnowledgeBoard(models.Model):

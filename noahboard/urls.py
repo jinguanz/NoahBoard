@@ -6,7 +6,6 @@ from nb_webapp import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
-
      url(r'^admin/', include(admin.site.urls)),
      url(r'^nb_webapp/', include('nb_webapp.urls', namespace="nb_webapp")),
 )

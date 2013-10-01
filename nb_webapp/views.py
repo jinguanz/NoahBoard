@@ -17,7 +17,7 @@ class IndexView(generic.ListView):
         return "asdf"
 
 
-#Save member id into db and connect with a internal id.
+# Save member id into db and connect with a internal id.
 def register(request):
     error = False
     if 'linkedin-id' in request.GET:
@@ -26,13 +26,13 @@ def register(request):
         if not this_linkedin_id:
             error = True
         else:
-            getLinkedinDta(this_linkedin_id)
+            getLinkedinData(this_linkedin_id)
             return render(request, 'nb_webapp/register.html',
                           {'LINKEDIN_ID': this_linkedin_id, 'name': this_name})
     return render(request, 'nb_webapp/register.html', {'error': error})
 
 
-def getLinkedinDta(linkedin_id):
+def getLinkedinData(linkedin_id):
     consumer_key = 'gxls9vtr7moe'
     consumer_secret = 'efjIUM6aj3Fza2Nh'
     user_token = '33713a5e-5c84-48b4-a19d-56f9333d5e99'

@@ -3,8 +3,7 @@
   <component name="DataSourceManagerImpl" format="xml" hash="776406574">
     <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="db55696c-37af-42ed-b510-ed47e0ba143b">
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql:///noahboard</jdbc-url>
-      <user-name>root</user-name>
+      <jdbc-url>jdbc:mysql://127.0.0.1/noahboard</jdbc-url>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/mysql-connector-license.txt</url>

@@ -1,4 +1,5 @@
 # Django settings for noahboard project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,10 +10,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', #'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'noahboard', # Or path to database file if using sqlite3.
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), #'Users\ChengLunoahboard', # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         #'USER': 'root',
         #'PASSWORD': '',
